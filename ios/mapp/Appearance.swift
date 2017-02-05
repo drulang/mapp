@@ -14,4 +14,10 @@ struct Appearance {
         static let SpringVelocity = CGFloat(1)
         static let SpringDampening = CGFloat(0.4)
     }
+    
+    struct Layer {
+        static let CornerRadius = CGFloat(3.0)
+        static let BorderWidth = CGFloat(2)
+        static let BorderColor = UIColor.lightGray
+    }
 }

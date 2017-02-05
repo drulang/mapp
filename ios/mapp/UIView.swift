@@ -20,4 +20,13 @@ extension UIView {
             view.boxTheHellOutOfEverything()
         }
     }
+    
+    func borderfy() {
+        self.layer.borderColor = Appearance.Layer.BorderColor.cgColor
+        self.layer.borderWidth = Appearance.Layer.BorderWidth
+    }
+    
+    func cornerfy() {
+        self.layer.cornerRadius = Appearance.Layer.CornerRadius
+    }
 }

@@ -13,6 +13,7 @@ enum ModelError : Error {
     case SerializationError
 }
 
+
 struct Category {
     let name:String
 }
@@ -24,6 +25,9 @@ struct PlaceSerialization {
     static let Longitude = "lon"
     static let Name = "name"
 }
+
+
+//TODO: Use struct for place and create a PlaceAnnotation class to box Place and conforms to Annotation
 
 class Place : NSObject, Annotation {
     let coordinate:LocationCoordinate2D

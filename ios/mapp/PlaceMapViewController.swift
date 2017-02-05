@@ -50,9 +50,9 @@ class PlaceMapViewController : UIViewController {
         statusLabel.backgroundColor = UIColor.white
         statusLabel.textAlignment = NSTextAlignment.center
         statusLabel.text = "No results 😯"
-        statusLabel.layer.cornerRadius = 3
-        statusLabel.layer.borderColor = UIColor.lightGray.cgColor
-        statusLabel.layer.borderWidth = 1
+        statusLabel.cornerfy()
+        statusLabel.borderfy()
+        
         statusLabel.layer.masksToBounds = true
         
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -112,9 +112,9 @@ extension PlaceMapViewController {
         searchTextField.font = UIFont.systemFont(ofSize: 25)
         searchTextField.delegate = self
         searchTextField.returnKeyType = UIReturnKeyType.search
-        searchTextField.layer.cornerRadius = 3
-        searchTextField.layer.borderColor = UIColor.lightGray.cgColor
-        searchTextField.layer.borderWidth = 2
+        searchTextField.borderfy()
+        searchTextField.cornerfy()
+
         searchTextField.placeholder = "Search for something! 🍕"
         
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))

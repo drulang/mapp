@@ -18,6 +18,10 @@ class CommandCenter {
 
 extension CommandCenter : LoctionSearchProtocol {
 
+    /*
+     Eventuall this abstraction can be used to pull data from other sources
+     besides the CityMapAPI. (i.e a local store)
+     */
     func placeSearch(query: LocationQuery, completion: @escaping ([Place]?, LocationSearchError?) -> Void) {
         primaryLocationSearch.placeSearch(query: query, completion: completion)
     }

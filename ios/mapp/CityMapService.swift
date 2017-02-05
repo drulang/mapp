@@ -82,7 +82,6 @@ extension CityMapAPI : LoctionSearchProtocol {
                 for (_, itemSubJson):(String, JSON) in json[API.Parameters.Items] {
                     
                     do {
-                        //TODO: Cleanup params
                         let categoryName = itemSubJson[API.Parameters.CategoryName].string ?? ""
                         let name = itemSubJson[API.Parameters.Name].string ?? ""
                         let lat = itemSubJson[API.Parameters.Latitude].double ?? 0.0
