@@ -10,3 +10,4 @@ import Foundation
 import MapKit
 
 typealias LocationCoordinate2D = CLLocationCoordinate2D
+typealias Annotation = MKAnnotation

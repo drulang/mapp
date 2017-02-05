@@ -10,7 +10,7 @@ import Foundation
 
 class CommandCenter {
     
-    let shared = CommandCenter()
+    static let shared = CommandCenter()
     
     fileprivate let primaryLocationSearch = CityMapAPI()
     

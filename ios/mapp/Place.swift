@@ -17,7 +17,8 @@ struct Category {
     let name:String
 }
 
-struct Place {
+
+class Place : NSObject, Annotation {
     let coordinate:LocationCoordinate2D
     let category:Category
     let name:String
@@ -28,7 +29,7 @@ struct Place {
         self.name = name
     }
     
-    init(withData data:[String:Any]) throws {
+    convenience init(withData data:[String:Any]) throws {
         guard let latitude = data["lat"] as? Double,
             let longitude = data["lon"] as? Double,
             let categoryRaw = data["category"] as? String,
