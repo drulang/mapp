@@ -20,6 +20,7 @@
 		71EF5DCC1E468145003DD271 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DCB1E468145003DD271 /* Log.swift */; };
 		71EF5DCE1E468A83003DD271 /* PlaceMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DCD1E468A83003DD271 /* PlaceMapViewController.swift */; };
 		71EF5DD11E477932003DD271 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DD01E477932003DD271 /* UIView.swift */; };
+		71EF5DD61E47AF1E003DD271 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DD51E47AF1E003DD271 /* Appearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		71EF5DCB1E468145003DD271 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		71EF5DCD1E468A83003DD271 /* PlaceMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMapViewController.swift; sourceTree = "<group>"; };
 		71EF5DD01E477932003DD271 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		71EF5DD51E47AF1E003DD271 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		D4CB2CB5358970902E77E8EA /* Pods_mapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E5F7792652573A07D72FED /* Pods-mapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-mapp/Pods-mapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,12 +87,12 @@
 		71EF5DA31E464FB2003DD271 /* mapp */ = {
 			isa = PBXGroup;
 			children = (
-				71EF5DCF1E477920003DD271 /* Extensions */,
-				71EF5DCA1E46583E003DD271 /* Misc */,
-				71EF5DC01E46503C003DD271 /* Service */,
 				71EF5DB81E464FD3003DD271 /* Main */,
 				71EF5DB71E464FCC003DD271 /* Controller */,
 				71EF5DB61E464FC7003DD271 /* Model */,
+				71EF5DC01E46503C003DD271 /* Service */,
+				71EF5DCF1E477920003DD271 /* Extensions */,
+				71EF5DCA1E46583E003DD271 /* Misc */,
 				71EF5DB91E464FEF003DD271 /* Supporting Files */,
 			);
 			path = mapp;
@@ -154,6 +156,7 @@
 			children = (
 				71EF5DC81E465807003DD271 /* Types.swift */,
 				71EF5DCB1E468145003DD271 /* Log.swift */,
+				71EF5DD51E47AF1E003DD271 /* Appearance.swift */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				71EF5DCC1E468145003DD271 /* Log.swift in Sources */,
 				71EF5DA51E464FB2003DD271 /* AppDelegate.swift in Sources */,
 				71EF5DBD1E465015003DD271 /* CommandCenter.swift in Sources */,
+				71EF5DD61E47AF1E003DD271 /* Appearance.swift in Sources */,
 				71EF5DC91E465807003DD271 /* Types.swift in Sources */,
 				71EF5DBB1E465007003DD271 /* Place.swift in Sources */,
 				71EF5DD11E477932003DD271 /* UIView.swift in Sources */,

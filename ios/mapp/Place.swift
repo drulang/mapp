@@ -18,6 +18,13 @@ struct Category {
 }
 
 
+struct PlaceSerialization {
+    static let CategoryName = "category_name"
+    static let Latitude = "lat"
+    static let Longitude = "lon"
+    static let Name = "name"
+}
+
 class Place : NSObject, Annotation {
     let coordinate:LocationCoordinate2D
     let category:Category
@@ -36,10 +43,10 @@ class Place : NSObject, Annotation {
     }
     
     convenience init(withData data:[String:Any]) throws {
-        guard let latitude = data["lat"] as? Double,
-            let longitude = data["lon"] as? Double,
-            let categoryRaw = data["category_name"] as? String,
-            let name = data["name"] as? String else {
+        guard let latitude = data[PlaceSerialization.Latitude] as? Double,
+            let longitude = data[PlaceSerialization.Longitude] as? Double,
+            let categoryRaw = data[PlaceSerialization.CategoryName] as? String,
+            let name = data[PlaceSerialization.Name] as? String else {
                 throw ModelError.SerializationError
         }
 

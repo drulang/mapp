@@ -13,22 +13,30 @@ import PureLayout
 fileprivate struct Config {
     struct Layout {
         static let StatusLabelHeight = CGFloat(30)
+        static let SearchTextFieldHeight = CGFloat(50)
+        static let Margin = CGFloat(10)
     }
 }
 
 
 class PlaceMapViewController : UIViewController {
     
+    // Views
     fileprivate let mapView           = MKMapView(forAutoLayout: ())
     fileprivate let searchTextField   = UITextField(forAutoLayout: ())
     fileprivate let statusLabel       = UILabel(forAutoLayout: ())
     fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
+    // Constraints
     fileprivate var constraintsAdded  = false
     fileprivate var searchTextFieldTopConstraint:NSLayoutConstraint?
     fileprivate var statusLabelTopConstraint:NSLayoutConstraint?
+    
     fileprivate var places:[Place]    = [] {
         didSet {  refreshInterface() }
     }
+    
+    // Computed
     fileprivate var currentLocation:LocationCoordinate2D {
         get {  return mapView.centerCoordinate }
     }
@@ -51,7 +59,6 @@ class PlaceMapViewController : UIViewController {
         activityIndicator.hidesWhenStopped = true
         
         mapView.delegate = self
-        
 
         view.addSubview(mapView)
         view.addSubview(statusLabel)
@@ -73,11 +80,11 @@ class PlaceMapViewController : UIViewController {
             activityIndicator.autoCenterInSuperview()
             
             // Search textfield
-            searchTextFieldTopConstraint = searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.top, withInset: -50)
-            searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.left, withInset: 10)
-            searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.right, withInset: 10)
+            searchTextFieldTopConstraint = searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.top, withInset: -Config.Layout.SearchTextFieldHeight)
+            searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.left, withInset: Config.Layout.Margin)
+            searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.right, withInset: Config.Layout.Margin)
             
-            searchTextField.autoSetDimension(ALDimension.height, toSize: 50)
+            searchTextField.autoSetDimension(ALDimension.height, toSize: Config.Layout.SearchTextFieldHeight)
             
             // Status Label
             statusLabelTopConstraint = statusLabel.autoPinEdge(ALEdge.top, to: ALEdge.top, of: searchTextField, withOffset: 0)
@@ -108,7 +115,7 @@ extension PlaceMapViewController {
         searchTextField.layer.cornerRadius = 3
         searchTextField.layer.borderColor = UIColor.lightGray.cgColor
         searchTextField.layer.borderWidth = 2
-        searchTextField.placeholder = "Search for something!"
+        searchTextField.placeholder = "Search for something! 🍕"
         
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setImage(#imageLiteral(resourceName: "IconRefresh"), for: UIControlState.normal)
@@ -181,31 +188,30 @@ extension PlaceMapViewController {
 
 //MARK: Animation
 extension PlaceMapViewController {
-    
-    func hideStatusLabel() {
-        guard let constraint = statusLabelTopConstraint else {
-            return
-        }
 
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            constraint.constant = 0
+    func animate(constraint:NSLayoutConstraint, withNewConstant constant:CGFloat) {
+        UIView.animate(withDuration: Appearance.Animation.Duration, delay: 0, usingSpringWithDamping: Appearance.Animation.SpringDampening, initialSpringVelocity: Appearance.Animation.SpringVelocity, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            constraint.constant = constant
             
             self.view.layoutIfNeeded()
             
         }, completion: nil)
     }
     
+    func hideStatusLabel() {
+        guard let constraint = statusLabelTopConstraint else {
+            return
+        }
+        animate(constraint: constraint, withNewConstant: 0)
+    }
+
     func showStatusLabel() {
         guard let constraint = statusLabelTopConstraint else {
             return
         }
         
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            constraint.constant = 70
-            
-            self.view.layoutIfNeeded()
-            
-        }, completion: nil)
+        let offset = Config.Layout.SearchTextFieldHeight + 20
+        animate(constraint: constraint, withNewConstant: offset)
     }
     
     func presentSearchTextField() {
@@ -220,13 +226,7 @@ extension PlaceMapViewController {
             return
         }
 
-        
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            constraint.constant = topOffset
-
-            self.view.layoutIfNeeded()
-            
-        }, completion: nil)
+        animate(constraint: constraint, withNewConstant: topOffset)
     }
 }
 

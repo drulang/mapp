@@ -22,6 +22,8 @@ fileprivate struct API {
         static let Zoom      = "zoom"
         static let Count     = "businesses"
         static let Items     = "items"
+        static let CategoryName = "category_name"
+        static let Name = "name"
     }
     
     struct Path {
@@ -81,18 +83,17 @@ extension CityMapAPI : LoctionSearchProtocol {
                     
                     do {
                         //TODO: Cleanup params
-                        let categoryName = itemSubJson["category_name"].string ?? ""
-                        let name = itemSubJson["name"].string ?? ""
-                        let lat = itemSubJson["lat"].double ?? 0.0
-                        let lon = itemSubJson["lon"].double ?? 0.0
+                        let categoryName = itemSubJson[API.Parameters.CategoryName].string ?? ""
+                        let name = itemSubJson[API.Parameters.Name].string ?? ""
+                        let lat = itemSubJson[API.Parameters.Latitude].double ?? 0.0
+                        let lon = itemSubJson[API.Parameters.Longitude].double ?? 0.0
                         
                         let convertedData:[String:Any] = [
-                            "category_name" : categoryName,
-                            "name" : name,
-                            "lat" : lat,
-                            "lon" : lon
+                            PlaceSerialization.CategoryName : categoryName,
+                            PlaceSerialization.Name : name,
+                            PlaceSerialization.Latitude : lat,
+                            PlaceSerialization.Longitude : lon
                         ]
-                        
                         
                         let place = try Place(withData: convertedData)
                         
