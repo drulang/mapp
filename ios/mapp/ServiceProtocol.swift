@@ -9,17 +9,22 @@
 import Foundation
 
 struct LocationQuery {
-    
+    var coordinate:LocationCoordinate2D
+    var query:String
+    var radius = 20
+    var zoom = 15
+    var count = 10
 }
 
 
 enum LocationSearchError: Error {
-    
+    case SerializationError
+    case NetworkError
 }
 
 
-protocol LoctionSearch {
+protocol LoctionSearchProtocol {
     
-    func placeSearch(query:LocationQuery, completion:([Place]?, LocationSearchError?)->Void)
+    func placeSearch(query:LocationQuery, completion:@escaping ([Place]?, LocationSearchError?)->Void)
     
 }

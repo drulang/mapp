@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let controller = UIViewController()
+        let controller = PlaceMapViewController()
         controller.view.backgroundColor = UIColor.green
         window?.rootViewController = controller
         
