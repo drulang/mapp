@@ -17,6 +17,7 @@ class PlaceMapViewController : UIViewController {
     fileprivate let searchTextField   = UITextField(forAutoLayout: ())
     fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     fileprivate var constraintsAdded  = false
+    fileprivate var searchTextFieldTopConstraint:NSLayoutConstraint?
     fileprivate var places:[Place]    = [] {
         didSet {  refreshInterface() }
     }
@@ -41,6 +42,7 @@ class PlaceMapViewController : UIViewController {
         
         view.setNeedsUpdateConstraints()
     }
+    
 
     override func updateViewConstraints() {
         if !constraintsAdded {
@@ -53,8 +55,10 @@ class PlaceMapViewController : UIViewController {
             activityIndicator.autoCenterInSuperview()
             
             // Search textfield
-            let insets = UIEdgeInsets(top: 35, left: 15, bottom: 15, right: 15)
-            searchTextField.autoPinEdgesToSuperviewEdges(with: insets, excludingEdge: ALEdge.bottom)
+            searchTextFieldTopConstraint = searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.top, withInset: -50)
+            searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.left, withInset: 15)
+            searchTextField.autoPinEdge(toSuperviewEdge: ALEdge.right, withInset: 15)
+            
             searchTextField.autoSetDimension(ALDimension.height, toSize: 50)
         }
         super.updateViewConstraints()
@@ -89,6 +93,9 @@ extension PlaceMapViewController {
         searchTextField.rightView = button
         searchTextField.rightViewMode = UITextFieldViewMode.always
 
+        let padView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 1))
+        searchTextField.leftView = padView
+        searchTextField.leftViewMode = UITextFieldViewMode.always
     }
     
     fileprivate func refreshInterface() {
@@ -145,9 +152,25 @@ extension PlaceMapViewController {
 extension PlaceMapViewController {
     
     func presentSearchTextField() {
+        let topOffset = CGFloat(35)
+
+        guard let constraint = searchTextFieldTopConstraint else {
+            return
+        }
+
+        guard constraint.constant != topOffset else {
+            log.warning("Search textfield is already in view")
+            return
+        }
+
         
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            constraint.constant = topOffset
+
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
     }
-    
 }
 
 //MARK: TextFieldDelegate
