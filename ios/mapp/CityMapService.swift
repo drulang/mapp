@@ -16,12 +16,12 @@ fileprivate struct API {
     }
     
     struct Parameters {
-        static let Latitude = "lat"
+        static let Latitude  = "lat"
         static let Longitude = "lon"
-        static let Radius = "radius"
-        static let Zoom = "zoom"
-        static let Count = "businesses"
-        static let Items = "items"
+        static let Radius    = "radius"
+        static let Zoom      = "zoom"
+        static let Count     = "businesses"
+        static let Items     = "items"
     }
     
     struct Path {
@@ -56,9 +56,7 @@ fileprivate enum Router : URLRequestConvertible {
     }
 }
 
-class CityMapAPI {
-    
-}
+class CityMapAPI { }
 
 
 //MARK: LoctionSearchProtocol
@@ -82,7 +80,19 @@ extension CityMapAPI : LoctionSearchProtocol {
                 for (_, itemSubJson):(String, JSON) in json[API.Parameters.Items] {
                     
                     do {
-                        let convertedData:[String:Any] = [:]  //TODO: Wire up the params
+                        //TODO: Cleanup params
+                        let categoryName = itemSubJson["category_name"].string ?? ""
+                        let name = itemSubJson["name"].string ?? ""
+                        let lat = itemSubJson["lat"].double ?? 0.0
+                        let lon = itemSubJson["lon"].double ?? 0.0
+                        
+                        let convertedData:[String:Any] = [
+                            "category_name" : categoryName,
+                            "name" : name,
+                            "lat" : lat,
+                            "lon" : lon
+                        ]
+                        
                         
                         let place = try Place(withData: convertedData)
                         

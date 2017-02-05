@@ -13,7 +13,6 @@ class CommandCenter {
     static let shared = CommandCenter()
     
     fileprivate let primaryLocationSearch = CityMapAPI()
-    
 }
 
 

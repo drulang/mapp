@@ -100,7 +100,7 @@ extension PlaceMapViewController {
         
         log.debug("Starting to execute place search")
         CommandCenter.shared.placeSearch(query: query) { (places:[Place]?, error:LocationSearchError?) in
-            guard error != nil else {
+            guard error == nil else {
                 log.error("Error performing search: \(error)")
                 return
             }
@@ -132,6 +132,7 @@ extension PlaceMapViewController : MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "cell")
+        view.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         view.image = #imageLiteral(resourceName: "IconPlaceMark")
 
         return view

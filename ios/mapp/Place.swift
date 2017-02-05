@@ -32,7 +32,7 @@ class Place : NSObject, Annotation {
     convenience init(withData data:[String:Any]) throws {
         guard let latitude = data["lat"] as? Double,
             let longitude = data["lon"] as? Double,
-            let categoryRaw = data["category"] as? String,
+            let categoryRaw = data["category_name"] as? String,
             let name = data["name"] as? String else {
                 throw ModelError.SerializationError
         }

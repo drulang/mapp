@@ -13,7 +13,7 @@
 		71EF5DAF1E464FB2003DD271 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EF5DAD1E464FB2003DD271 /* LaunchScreen.storyboard */; };
 		71EF5DBB1E465007003DD271 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DBA1E465007003DD271 /* Place.swift */; };
 		71EF5DBD1E465015003DD271 /* CommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DBC1E465015003DD271 /* CommandCenter.swift */; };
-		71EF5DBF1E46501E003DD271 /* CityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DBE1E46501E003DD271 /* CityMap.swift */; };
+		71EF5DBF1E46501E003DD271 /* CityMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DBE1E46501E003DD271 /* CityMapService.swift */; };
 		71EF5DC21E465097003DD271 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DC11E465097003DD271 /* ServiceProtocol.swift */; };
 		71EF5DC51E4650AD003DD271 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EF5DC41E4650AD003DD271 /* MapKit.framework */; };
 		71EF5DC91E465807003DD271 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF5DC81E465807003DD271 /* Types.swift */; };
@@ -31,7 +31,7 @@
 		71EF5DB01E464FB2003DD271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71EF5DBA1E465007003DD271 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		71EF5DBC1E465015003DD271 /* CommandCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCenter.swift; sourceTree = "<group>"; };
-		71EF5DBE1E46501E003DD271 /* CityMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityMap.swift; sourceTree = "<group>"; };
+		71EF5DBE1E46501E003DD271 /* CityMapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityMapService.swift; sourceTree = "<group>"; };
 		71EF5DC11E465097003DD271 /* ServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		71EF5DC41E4650AD003DD271 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		71EF5DC81E465807003DD271 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		71EF5DC01E46503C003DD271 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				71EF5DBE1E46501E003DD271 /* CityMap.swift */,
+				71EF5DBE1E46501E003DD271 /* CityMapService.swift */,
 				71EF5DC11E465097003DD271 /* ServiceProtocol.swift */,
 			);
 			name = Service;
@@ -293,7 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71EF5DBF1E46501E003DD271 /* CityMap.swift in Sources */,
+				71EF5DBF1E46501E003DD271 /* CityMapService.swift in Sources */,
 				71EF5DCE1E468A83003DD271 /* PlaceMapViewController.swift in Sources */,
 				71EF5DCC1E468145003DD271 /* Log.swift in Sources */,
 				71EF5DA51E464FB2003DD271 /* AppDelegate.swift in Sources */,
