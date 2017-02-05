@@ -23,6 +23,12 @@ class Place : NSObject, Annotation {
     let category:Category
     let name:String
     
+    var title: String? {
+        get {
+            return name
+        }
+    }
+    
     init(coordinate:LocationCoordinate2D, category:Category, name:String) {
         self.coordinate = coordinate
         self.category = category

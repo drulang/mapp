@@ -121,7 +121,7 @@ extension PlaceMapViewController : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         executePlaceSearch(withBuilder: buildLocationQuery)
-        
+
         return true
     }
     
@@ -131,8 +131,15 @@ extension PlaceMapViewController : UITextFieldDelegate {
 extension PlaceMapViewController : MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "cell")
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")
+        
+        if let annotation = annotation as? Place {
+            let label = UILabel()
+            label.text = annotation.category.name
+            view.canShowCallout = true
+            view.detailCalloutAccessoryView = label
+            
+        }
         view.image = #imageLiteral(resourceName: "IconPlaceMark")
 
         return view
